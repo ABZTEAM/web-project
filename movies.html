@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movies</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Movies</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="home.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="favorite.html">Favorite</a>
+    <a href="#" onclick="logout()">Logout</a>
+  </nav>
+
+  <main>
+    <section id="movie-list">
+
+      <article class="movie-box">
+        <h3>Inception</h3>
+        <img src="imageinception.jpg" alt="Inception Poster" width="180">
+        <p><em>A mind-bending thriller by Christopher Nolan.</em></p>
+        <button class="submit-btn" onclick="addToFavorites('Inception')">Add to Favorites</button>
+      </article>
+
+      <article class="movie-box">
+        <h3>Interstellar</h3>
+        <img src="imageinterstellar.jpg" alt="Interstellar Poster" width="180">
+        <p><em>An epic space adventure that bends time and reality.</em></p>
+        <button class="submit-btn" onclick="addToFavorites('Interstellar')">Add to Favorites</button>
+      </article>
+
+      <article class="movie-box">
+        <h3>Avatar</h3>
+        <img src="imageavatar.jpg" alt="Avatar Poster" width="180">
+        <p><em>A stunning sci-fi story set on the world of Pandora.</em></p>
+        <button class="submit-btn" onclick="addToFavorites('Avatar')">Add to Favorites</button>
+      </article>
+
+    </section>
+  </main>
+
+  <script>
+    // --- Protect page ---
+    if (localStorage.getItem("loggedIn") !== "true") {
+      alert("Please log in first!");
+      window.location.href = "login.html";
+    }
+
+    // --- Logout ---
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("currentUser");
+      alert("Logged out!");
+      window.location.href = "login.html";
+    }
+
+    // --- Add to Favorites ---
+    function addToFavorites(movieTitle) {
+      let currentUser = localStorage.getItem("currentUser");
+      if (!currentUser) {
+        alert("You need to log in first!");
+        window.location.href = "login.html";
+        return;
+      }
+
+      let favorites = JSON.parse(localStorage.getItem("favorites_" + currentUser) || "[]");
+
+      if (favorites.includes(movieTitle)) {
+        alert(movieTitle + " is already in your favorites!");
+      } else {
+        favorites.push(movieTitle);
+        localStorage.setItem("favorites_" + currentUser, JSON.stringify(favorites));
+        alert(movieTitle + " added to your favorites!");
+      }
+    }
+  </script>
+</body>
+</html>

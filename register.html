@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - My Movies Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+  <header>
+        <h1> Create New Account </h1>
+    </header>
+
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="home.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="favorite.html">Favorite</a>
+    </nav>
+
+    <main>
+        <div class="welcome-box">
+            <h2>Create New Account</h2>
+            <form id="regForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" class="movie-textarea">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" class="movie-textarea">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" class="movie-textarea">
+                </div>
+                <input type="submit" value="Register" class="submit-btn">
+            </form>
+        </div>
+    </main>
+
+    
+    <script>
+  
+  
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('regForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();               // stop page reload
+
+        const username = form.username.value.trim();
+        const email    = form.email.value.trim();
+        const password = form.password.value.trim();
+
+        
+        if (username.length < 3) {
+            alert('Username must be at least 3 characters long.');
+            return;
+        }
+        if (!email.includes('@') || email.length < 5) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters long.');
+            return;
+        }
+
+        /* ---- Check if user already exists ---- */
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        if (users.some(u => u.username === username)) {
+            alert('This username is already taken.');
+            return;
+        }
+
+        /* ---- Save new user ---- */
+        users.push({ username, password, email });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Account created! You can now log in.');
+        form.reset();                     // clear fields
+        window.location.href = 'login.html';
+    });
+});
+  
+  </script>
+  
+</body>
+</html>

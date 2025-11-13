@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    
+    <header>
+        <h1>Favorite Movies</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="home.html">Home</a>
+        <a href="movies.html"> Movies</a>
+        <a href="favorite.html">Favorite</a>
+    </nav>
+
+    <main>
+        <section>
+            <article class="movie-box">
+                <h3>Inception</h3>
+                <img src="imageinception.jpg" alt="Inception Poster" width="180">
+                <p><em>A mind-bending thriller by Christopher Nolan.</em></p>
+            </article>
+
+            <article class="movie-box">
+                <h3>Interstellar</h3>
+                <img src="imageinterstellar.jpg" alt="Interstellar Poster" width="180">
+                <p><em>An epic space adventure that bends time and reality.</em></p>
+            </article>
+
+            <article class="movie-box">
+                <h3>Avatar</h3>
+                <img src="imageavatar.jpg" alt="Avatar Poster" width="180">
+                <p><em>A stunning sci-fi story set on the world of Pandora.</em></p>
+            </article>
+        </section>
+    </main>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll("nav a");
+        var current = location.pathname.split("/").pop();
+        links.forEach(function(link) {
+            if (link.getAttribute("href") === current) {
+                link.classList.add("active");
+            }
+        });
+
+        var currentUser = localStorage.getItem("currentUser");
+        if (currentUser) {
+            var header = document.querySelector("header");
+            var greet = document.createElement("p");
+            greet.textContent = "Welcome back, " + currentUser + "!";
+            greet.style.color = "gray";
+            greet.style.fontStyle = "italic";
+            header.appendChild(greet);
+        }
+    });
+    </script>
+
+</body>
+</html>

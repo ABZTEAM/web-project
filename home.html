@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies Website - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <h1 class="special">🎬 My Movies Website 🎥</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="home.html">Home</a>
+        <a href="movies.html"> Movies</a>
+        <a href="favorite.html">Favorite</a>
+    </nav>
+
+    <main>
+        <section class="welcome-box">
+            <h2>Welcome!</h2>
+            <p><i>
+                <span class="highlight">Movies</span> are an amazing way to explore stories. 
+                This website will show you some cool films and ask you about your favorite  
+           </i></p>
+           <p id="user-greeting" style="margin-top:10px;color:gray;font-style:italic;"></p>
+        </section>
+    </main>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var currentUser = localStorage.getItem("currentUser");
+        var greeting = document.getElementById("user-greeting");
+        if (currentUser) {
+            greeting.textContent = "Welcome back, " + currentUser + "!";
+        } else {
+            greeting.textContent = "Login to personalize your movie experience.";
+        }
+
+        var links = document.querySelectorAll("nav a");
+        var current = location.pathname.split("/").pop();
+        links.forEach(function(link) {
+            if (link.getAttribute("href") === current) {
+                link.classList.add("active");
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>
