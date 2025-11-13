@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - My Movies Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="showWelcome()">
+
+<header>
+    <h1>🎬 My Movies Website 🎥</h1>
+</header>
+
+<nav>
+    <a href="login.html">Login</a>
+    <a href="home.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="favorite.html">Favorite</a>
+</nav>
+
+<main>
+    <section class="welcome-box">
+        <h2>Welcome!</h2>
+        <p><em>Movies are an amazing way to explore stories and emotions.</em></p>
+        <p id="message" style="color:gray;font-style:italic;"></p>
+    </section>
+</main>
+
+<script type="text/javascript">
+function showWelcome() {
+    var username = "Guest User";
+    document.getElementById("message").innerHTML = "Welcome back, " + username + "!";
+}
+</script>
+
+</body>
+</html>

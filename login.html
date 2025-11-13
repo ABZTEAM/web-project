@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - My Movies Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Login</h1>
+</header>
+
+<nav>
+    <a href="login.html">Login</a>
+    <a href="home.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="favorite.html">Favorite</a>
+</nav>
+
+<main>
+    <div class="welcome-box">
+        <h2>Login Form</h2>
+        <form name="loginForm">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="username" class="movie-textarea">
+            </div>
+
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" class="movie-textarea">
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" name="showPassword" onclick="togglePassword()"> Show Password
+            </div>
+
+            <input type="button" value="Login" class="submit-btn" onclick="checkLogin()">
+        </form>
+
+        <div class="links">
+            <a href="register.html">Create New Account</a>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+function checkLogin() {
+    var username = document.forms[0].elements["username"].value;
+    var password = document.forms[0].elements["password"].value;
+
+    if (username == "") {
+        alert("Please enter your username");
+        return false;
+    }
+
+    if (password == "") {
+        alert("Please enter your password");
+        return false;
+    }
+
+    alert("Login Successful!");
+    window.location.href = "home.html";
+}
+
+function togglePassword() {
+    var passField = document.forms[0].elements["password"];
+    if (passField.type == "password") {
+        passField.type = "text";
+    } else {
+        passField.type = "password";
+    }
+}
+</script>
+</body>
+</html>
