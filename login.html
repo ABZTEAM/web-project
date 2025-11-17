@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - My Movies Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Login</h1>
+</header>
+
+<nav>
+    <a href="login.html">Login</a>
+    <a href="home.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="favorite.html">Favorite</a>
+</nav>
+
+<main>
+    <div class="welcome-box">
+        <h2>Login Form</h2>
+
+        <form name="loginForm">
+
+            
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" name="username" class="login-input" id="username">
+            </div>
+
+           
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" name="password" class="login-input" id="password">
+            </div>
+
+          
+            <div class="form-group">
+                <input type="checkbox" onclick="togglePassword()"> Show Password
+            </div>
+
+            
+            <input type="button" value="Login" class="submit-btn" onclick="checkLogin()">
+        </form>
+
+        <div class="links">
+            <a href="register.html">Create New Account</a>
+        </div>
+    </div>
+</main>
+
+<script>
+function checkLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    if (username === "") {
+        alert("Please enter your username");
+        return false;
+    }
+    if (password === "") {
+        alert("Please enter your password");
+        return false;
+    }
+
+    window.location.href = "home.html";
+}
+
+function togglePassword() {
+    var field = document.getElementById("password");
+    field.type = (field.type === "password") ? "text" : "password";
+}
+</script>
+
+</body>
+</html>

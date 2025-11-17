@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Favorites</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Your Favorite Movies</h1>
+    </header>
+
+    <nav>
+        <a href="login.html">Login</a>
+        <a href="home.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="favorites.html">Favorites</a>
+    </nav>
+
+    <main>
+        <section class="favorite-movie-box">
+            <h2>What is Your Favorite movie ?</h2>
+
+            <textarea 
+                id="favText"
+                placeholder="Write a detailed description of your favorite movie..."
+                class="movie-textarea"
+            ></textarea>
+
+            <br><br>
+
+            <button class="submit-btn" onclick="submitFavorite()">Submit</button>
+        </section>
+    </main>
+
+    <script type="text/javascript">
+        function submitFavorite() {
+            var ta = document.getElementById('favText');
+            var text = ta.value;
+            // check if the textarea is empty
+            if (text.replace(/\s/g, '') === '') { 
+                alert('Please write something before submitting.');
+                return;
+            }
+            //show thx and reset the textarea 
+            alert('Thank you for sharing your favorite movie!');
+            ta.value = ''; 
+            ta.focus();
+        }
+    </script>
+
+</body>
+</html>
